@@ -1,39 +1,37 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
-import { Commerce } from './commerce.entity';
+import { 
+  Entity, 
+  Column, 
+  PrimaryGeneratedColumn, 
+  CreateDateColumn, 
+  UpdateDateColumn, 
+  DeleteDateColumn, 
+  OneToOne 
+} from 'typeorm';
+import { Account } from './account.entity'; // Importamos la entidad Account
 
-@Entity()
+@Entity('users') // Nombre explícito para la tabla
 export class User {
-  @PrimaryGeneratedColumn('uuid')  // Se usa 'uuid' para que el id sea generado automáticamente como UUID
+  @PrimaryGeneratedColumn('uuid') // ID generado automáticamente como UUID
   id: string;
 
   @Column({ unique: true })
-  userName: string;
+  email: string; // Email único
 
   @Column()
-  name: string;
-
-  @Column({ unique: true })
-  email: string;
-
-  //@Column({ select: false })
-  @Column()
-  password: string;
+  password: string; // Contraseña encriptada
 
   @Column({ default: 'user' })
-  role: string;
-
-  @Column({default: ''})
-  workCommerce: string;
+  role: string; // Rol del usuario
 
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt: Date; // Fecha de creación
 
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt: Date; // Fecha de la última actualización
 
   @DeleteDateColumn()
-  deletedAt: Date;
+  deletedAt: Date; // Fecha de eliminación lógica
 
-  @OneToMany(() => Commerce, (commerce) => commerce.user)
-  commerces: Commerce[];
+  @OneToOne(() => Account, (account) => account.user, { cascade: true }) // Relación uno a uno con Account
+  account: Account; // Cuenta asociada al usuario
 }
