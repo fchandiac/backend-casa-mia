@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class CartAppService {
-  getHello(): string {
-    return 'Hello World!';
+  async health(): Promise<string> {
+    return 'Cart Microservice is healthy';
   }
 }

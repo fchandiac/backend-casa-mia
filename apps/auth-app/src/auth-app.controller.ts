@@ -7,7 +7,7 @@ export class AuthAppController {
   constructor(private readonly authAppService: AuthAppService) {}
 
   // Maneja el mensaje de salud (health check)
-  @MessagePattern({ cmd: 'health' })
+  @MessagePattern({ cmd: 'auth-health' })
   async health(): Promise<string> {
     return this.authAppService.health(); // Delegamos la lógica al servicio
   }

@@ -5,13 +5,11 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     DeleteDateColumn,
-    ManyToOne,
-    JoinColumn, // Importa JoinColumn
   } from 'typeorm';
 
   
   @Entity()
-  export class CouponEntity { // La clase se sigue llamando CouponEntity
+  export class Coupon { // La clase se sigue llamando CouponEntity
     @PrimaryGeneratedColumn('uuid')
     id!: string;
   

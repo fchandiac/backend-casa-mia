@@ -11,10 +11,12 @@ export class AuthController {
     @Inject('AUTH_SERVICE') private readonly client: ClientProxy, // Inyecta el cliente registrado
   ) {}
 
-  @Get('microservice-health')
+  @Get('auth-microservice-health')
   async microServiceHealth(): Promise<string> {
     //@ts-ignore
-    return this.client.send<string>({ cmd: 'health' }, {});
+    return this.client.send<string>({ cmd: 'auth-health' }, {});
+    //return 'Auth Gateway Service is healthy';
+    
   }
 
   @Get('health')

@@ -6,7 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "dev:all": "nest start gateway --watch & nest start auth-app",
+    "dev:all": "nest start gateway --watch & nest start auth-app --watch & nest start cart-app --watch",
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
